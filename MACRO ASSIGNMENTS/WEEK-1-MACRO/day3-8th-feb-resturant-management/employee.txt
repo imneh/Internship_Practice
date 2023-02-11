@@ -1,0 +1,10 @@
+s1:start
+s2:identify menu items and availability 
+s3:if customer order food tell whether it is available or not
+s4:if it is available take order and inform to kitchen and once done from 
+   kitchen serve the food 
+s5:else not available ask customer to change the dish
+S6:Ask customer if he needs anything else
+   if yes collect order according to availability info from kitchen
+   else give the bill 
+s7:stop

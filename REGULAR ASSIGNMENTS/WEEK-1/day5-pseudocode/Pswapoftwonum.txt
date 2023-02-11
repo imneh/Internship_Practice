@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE a,b,temp
+    READ a,b
+    CALCULATE temp=a,a=b,b=temp
+        DISPLAY a,b
+END

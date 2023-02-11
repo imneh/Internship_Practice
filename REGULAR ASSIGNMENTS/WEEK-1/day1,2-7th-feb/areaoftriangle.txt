@@ -1,0 +1,6 @@
+s1:start
+s2:declare height,breadth,area;
+s3:read hight,breadth;
+s4:area=height*breadth/2;
+s5:display area;
+s6:stop

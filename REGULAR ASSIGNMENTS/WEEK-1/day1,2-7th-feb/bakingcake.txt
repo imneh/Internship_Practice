@@ -1,0 +1,11 @@
+S1: Start
+S2: Preheat the oven
+S3: Collect the ingredients
+S4: Ingredients as per requirements
+S5: Mix together the ingredients to make the batter
+S6: Grease a pan
+S7: Pour the batter into the pan
+S8: Put the pan in the oven
+S9: Set a timer
+S10: When the timer goes off, take the pan out of the oven
+        have your delicious cake

@@ -1,0 +1,9 @@
+s1:start
+s2:declare n;//n=2
+s3:read n;
+s4:check if it is divisible by 2;
+  if n%2==0://2%2==0
+  display n is even
+  else
+  display n is odd
+s5:stop

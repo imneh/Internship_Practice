@@ -1,0 +1,9 @@
+step1:start
+step2:go to library
+step3:fill your detailes and entry time
+step4:provide your std_USN,lib_id if it is correct goto step 5
+		else go to step8
+step5:get a book from your favorite section
+step6:read your desired book
+step7:after completetion(reading) fill leaving details
+step8:stop

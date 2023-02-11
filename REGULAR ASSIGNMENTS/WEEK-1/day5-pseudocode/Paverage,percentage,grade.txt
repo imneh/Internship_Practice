@@ -1,0 +1,19 @@
+BEGIN
+    DECLARE s1,s2,s3,s4,s5,gain,per;
+    READ s1,s2,s3,s4,s5;
+    CALCULATE gain=s1+s2+s3+s4+s5;
+    DISPLAY gain;
+    CALCULATE per=(marksgain/total)*100;
+    DISPLAY per;
+    IF(per>=90 && per<=100)THEN
+        DISPLAY "grade A"
+    ELSE IF (per>=80 && per<=89)THEN
+        DISPLAY "grade B"
+    ELSE IF (per>=70 && per<=79)THEN
+        DISPLAY "grade C"
+    ELSE IF (per>=60 && per<=69)THEN
+        DISPLAY "grade D"
+    ELSE
+        DISPLAY "fail"
+    END IF
+END

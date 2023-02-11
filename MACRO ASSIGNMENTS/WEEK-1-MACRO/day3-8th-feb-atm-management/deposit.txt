@@ -1,0 +1,9 @@
+s1:start
+s2:go to ATM 
+s3:insert your debit card
+s4:enter 4 digit pin if correct goto step 5 else step9
+s5:choose an account type
+s6:enter the bill based on banks instruction
+s7:confirm the total deposit
+s8:get a transaction receipt if needed;
+s9:stop

@@ -1,0 +1,11 @@
+step1:start
+step2:go to library 
+step3:fill your name and entering time 
+step4:provide your std_USN,lib_id to the incharge
+step5:if std_USN,lib_id verified goto step6
+		else goto step9
+step6:return your book 
+step7:if it is out of due date badluck pay fine
+step8:fill leaving time 
+step9:stop
+

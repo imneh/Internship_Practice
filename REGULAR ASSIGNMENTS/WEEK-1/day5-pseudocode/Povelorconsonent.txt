@@ -1,0 +1,8 @@
+BEGIN
+    DECLARE ch
+    READ ch
+    IF(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')THEN
+        DISPLAY ch is ovel
+    ELSE 
+        DISPLAY ch is consonent
+END

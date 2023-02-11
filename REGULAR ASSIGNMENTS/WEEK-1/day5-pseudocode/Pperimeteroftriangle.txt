@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE side,base,side,perimeter
+    READ side,base,side
+    CALCULATE peri=side+base+side
+    DISPLAY peri
+END

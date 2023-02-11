@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE a,b;
+    READ a,b;
+    CALCULATE a=a+b,b=a-b,a=a-b
+        DISPLAY a,b
+END

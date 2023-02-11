@@ -1,0 +1,6 @@
+s1:start
+s2:declareside,perimeter;
+s3:read the side;
+s4:perimeter=4*side;
+s5:display perimeter;
+s6:stop

@@ -1,0 +1,14 @@
+step1:start
+step2:declare basic,gross,DA,HRA;
+step3:read basic salary;
+step4: To find Gross salary
+       if(BasicSal<=10000)
+         GS=BasicSal+HRA+DA:
+      Display GS
+      elseif(BasicSal<=20000)
+         GS=BasicSal+HRA+DA:
+      Display GS
+       elseif(BasicSal>20000)
+         GS=BasicSal+HRA+DA:
+      Display GS
+step5:stop

@@ -1,0 +1,10 @@
+step1:start
+step2:go to library and fill the entry time and details
+step3:request library incharge to get a book
+step4:provide your std_USN,lib_id
+step5:if it is verified then goto step 6
+		else goto step 9
+step6:take a book which you want to take 
+step7:take a schedule to return the book
+step8:enter the leaving time and detail
+step9:stop

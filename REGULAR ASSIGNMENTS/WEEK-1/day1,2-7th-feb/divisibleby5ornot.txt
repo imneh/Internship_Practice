@@ -1,0 +1,8 @@
+s1:start
+s2:declare n;// n=15
+s3:read n;
+s4:if n%5==0 // 15%5
+     display n is divisible by 5
+      else
+     display n is not divisible by 5;
+s5:stop

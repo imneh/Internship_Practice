@@ -1,0 +1,12 @@
+order(online)
+step1:start
+step2:login if already have an account else goto step 3
+step3:create an account with user credentials
+step4:see the display menu
+step5: search for a desired dish 
+step6: if available go to step  7
+        else goto step 10
+step7:order a food of your wish
+step8:provide address to deliver
+step9:proceed the payment process
+step10:stop

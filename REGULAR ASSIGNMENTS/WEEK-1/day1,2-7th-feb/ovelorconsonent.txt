@@ -1,0 +1,14 @@
+S1: Start
+S2: Declare character type variable ch
+S3: Read ch
+S4:
+       if(ch == 'a' ||
+                ch == 'e' ||
+                ch == 'i' ||
+                ch == 'o' ||
+                ch == 'u'  )
+               
+            Print "Vowel"
+        else
+            Print "Consonant"          
+S5:  Stop

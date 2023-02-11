@@ -1,0 +1,8 @@
+BEGIN
+    DECLARE n
+    READ n
+    IF(n%2==0)THEN
+        DISPLAY n is even
+    ELSE 
+        DISPLAY n is odd
+END

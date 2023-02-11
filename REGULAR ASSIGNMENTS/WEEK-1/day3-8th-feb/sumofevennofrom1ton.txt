@@ -1,0 +1,10 @@
+s1:start
+s2:declare i,n,sum
+s3:read n
+s4:intialize i=2,sum=0
+s5:check i value with n if i<=n true goto step5 else goto step9
+s6:if (i%2==0) go to step 7
+s7:sum=sum+i go to step 8
+s8:increment i goto step5
+s9:display sum value
+s10:stop

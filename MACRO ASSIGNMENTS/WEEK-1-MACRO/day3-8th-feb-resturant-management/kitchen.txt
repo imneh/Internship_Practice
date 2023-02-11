@@ -1,0 +1,7 @@
+s1:start
+s2:give info about dish availibility to employee
+s3:wait for order from customer collected by employee
+s4:collect order details and customer requirements
+s5:once order is received prepare the food and keep in the kitchen according to customer need
+s6:keep item ready for employee
+s6:stop

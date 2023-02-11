@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE side,peri
+    READ side
+    CALCULATE peri=4*side
+    DISPLAY perimeter
+END

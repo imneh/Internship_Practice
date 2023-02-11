@@ -1,0 +1,12 @@
+s1:start
+s2:go to ATM insert ATM card
+s3:select language
+s4:enter your 4 digit pin if correct goto step5
+	else goto step10
+s5:select the type of transaction
+s6:select the type of account 
+s7:enter the withdrawal amount if available goto step8
+	else goto step10
+s8:collect the cash and ATM card
+s9:take a printed receipt,if needed;
+s10:stop

@@ -1,0 +1,6 @@
+s1:start
+s2:declare length,breadth,perimeter;
+s3:read length,breadth;
+s4:calculate perimeter=2(length+breadth);
+s5:display perimeter;
+s6:stop

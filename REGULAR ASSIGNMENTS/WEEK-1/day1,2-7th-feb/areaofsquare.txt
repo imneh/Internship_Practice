@@ -1,0 +1,6 @@
+step1: start
+step2: declare side,area
+step3: read side
+step4: area=side*side
+step5: display area
+step6:stop

@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE length,breadth,perimeter
+    READ length,breadth
+    CALCULATE peri=2(length+breadth)
+    DISPLAY peri
+END

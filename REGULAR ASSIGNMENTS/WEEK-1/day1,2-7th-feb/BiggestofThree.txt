@@ -1,0 +1,10 @@
+s1:start
+s2:declare n1,n2,n3;
+s3:read n1,n2,n3;
+s4:if(n1>n2)and(n1>n3);
+s4:display n1
+s4:else if(n2>n1)and(n2>n3);
+s4:display n2
+s4:else
+s4:display n3
+s5:stop

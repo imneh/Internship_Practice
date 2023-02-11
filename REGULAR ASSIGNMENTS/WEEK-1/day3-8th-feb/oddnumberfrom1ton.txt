@@ -1,0 +1,12 @@
+s1:start
+s2:declare i ,n
+s3:read n
+s4:intialize the i value i=1
+s5:check i value with n 
+    if i<=n goto step6 else goto step9
+s6:check i is odd number or not
+   if(i%2!==0) if true go to step 7 
+   else go to step 8
+s7:display i
+s8:increment i go to step 5
+s9:stop

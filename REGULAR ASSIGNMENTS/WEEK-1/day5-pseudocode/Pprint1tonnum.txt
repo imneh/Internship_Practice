@@ -1,0 +1,9 @@
+BEGIN
+    DECLARE n,i
+    READ n
+    INITIALIZE i=1
+      WHILE(i<=n)DO
+        DISPLAY i
+        i=i+1
+      END WHILE
+END

@@ -1,0 +1,9 @@
+for searching book(offline)
+step1:start
+step2:go to the library and ask the library incharge to search a book
+step3:declare your std_USN,lib_id
+step4:if std_USN,lib_id verified goto step 5
+		else goto step7
+step5:search for a desired book else(if it is not there) go to step  7
+step6:get a desired(searched) book
+step7:stop

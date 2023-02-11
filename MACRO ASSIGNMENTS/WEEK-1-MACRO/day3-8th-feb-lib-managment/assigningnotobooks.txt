@@ -1,0 +1,9 @@
+s1:start
+s2:go to library fill entering details(time)
+s3:ask the incharge to assign number to  the books
+s4:provide your std_usn,lib_id
+s5:if std_usn,lib_id verified goto step6
+	else goto step8
+s6:assign number to the books according to their order
+s7:fill leaving time
+s8:stop

@@ -1,0 +1,9 @@
+s1:start
+s2:go to library fill entering details(time)
+s3:ask the librarian permission to arrange the books
+s4:provide your std_usn,lib_id
+s5:if std_usn,lib_id verified goto step 6 
+	else goto step8
+s6:arrange the books in order of their size and category 
+s7:fill leaving time 
+s8:stop

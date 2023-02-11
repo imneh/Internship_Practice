@@ -1,0 +1,6 @@
+BEGIN
+    DECLARE height,breadth,area
+    READ height,breadth
+    CALCULATE area=h*b/2
+    DISPLAY
+END

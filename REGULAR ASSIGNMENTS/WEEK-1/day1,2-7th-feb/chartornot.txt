@@ -1,0 +1,8 @@
+s1:start
+s2:declare char;
+s3:read char;
+s4:if char=='t'
+  display char is t;
+  else
+  diplay char is not t;
+s5:stop;

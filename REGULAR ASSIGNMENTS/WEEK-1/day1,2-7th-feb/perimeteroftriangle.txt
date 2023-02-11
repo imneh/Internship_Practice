@@ -1,0 +1,6 @@
+s1:start;
+s2:declare X,Y,Z,P;
+s3:read X,Y,Z;
+s4:calculate=X+Y+Z;
+s5:display P;
+s6:stop
