@@ -12,7 +12,7 @@ class StudentParamaterConstructor{
     System.out.println("student details " +roll+" "+name+" "+place);
   }
   public static void main(String args[]){
-    StudentParamaterizedConstructor s=new StudentParamaterizedConstructor(10,"siraj","sirsi");
+    StudentParamaterizedConstructor s=new StudentParamaterizedConstructor(10,"Neha","shivamogga");
     s.display();
   }
 }
