@@ -38,5 +38,19 @@ public int getAge() {
 }
 public void setAge(int age) {
     this.age = age;
-}  
+}
+  
+}
+class ComparableStudentName{
+  public static void main(String args[]){
+    ArrayList<Student> students=new ArrayList<Student>();
+    Scanner sc=new Scanner(System.in);
+    for(int i=0;i<3;i++){
+      students.add(new Student(sc.nextInt(),sc.next(),sc.next(),sc.nextInt()));
+    }
+    Collections.sort(students);
+    for(Student st:students){
+      System.out.println(st.getId()+" "+st.getName()+""+st.getDept()+" "+st.getAge());
+    }
+  }
 }
