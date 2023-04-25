@@ -9,7 +9,7 @@
 
 import java.util.Scanner;
 
-public class MicroProject{
+public class SchoolManagement{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         School school = new School();
