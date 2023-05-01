@@ -113,7 +113,7 @@ class School {
     }
 }
 
-public class SchoolManagement {
+public class SchoolModel{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         School school = new School();
