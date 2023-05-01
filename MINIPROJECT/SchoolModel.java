@@ -7,102 +7,176 @@
 //I hope this gives you a good starting point for your assignment!
 //Regenerate response
 
-import java.util.Scanner;
+import java.util.*;
 
-public class SchoolModel{
+ class Teacher{
+   private String name;
+   private String subject;
+
+   public Teacher(String name, String Subject){
+     this.name = name;
+     this.subject = subject;
+   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
+
+public String getSubject() {
+	return subject;
+}
+
+public void setSubject(String subject) {
+	this.subject = subject;
+}
+}
+class Student {
+    private String name;
+    private int gradeLevel;
+
+    public Student(String name, int gradeLevel) {
+        this.name = name;
+        this.gradeLevel = gradeLevel;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGradeLevel() {
+        return gradeLevel;
+    }
+
+    public void setGradeLevel(int gradeLevel) {
+        this.gradeLevel = gradeLevel;
+    }
+}
+
+class School {
+    private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    private ArrayList<Student> students = new ArrayList<Student>();
+
+    public void addTeacher(Teacher teacher) {
+        teachers.add(teacher);
+    }
+
+    public void removeTeacher(Teacher teacher) {
+        teachers.remove(teacher);
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
+
+    public void printTeachers() {
+        System.out.println("List of Teachers:");
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher.getName() + " teaches " + teacher.getSubject());
+        }
+    }
+
+    public void printStudents() {
+        System.out.println("List of Students:");
+        for (Student student : students) {
+            System.out.println(student.getName() + " is in grade " + student.getGradeLevel());
+        }
+    }
+
+    public Teacher findTeacherByName(String name) {
+        for (Teacher teacher : teachers) {
+            if (teacher.getName().equals(name)) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+
+    public Student findStudentByName(String name) {
+        for (Student student : students) {
+            if (student.getName().equals(name)) {
+                return student;
+            }
+        }
+        return null;
+    }
+}
+
+public class SchoolManagement {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         School school = new School();
+        String choice = "";
 
-        boolean running = true;
-        while (running) {
-            System.out.println("What would you like to do?");
-            System.out.println("1. Add teacher");
-            System.out.println("2. Remove teacher");
-            System.out.println("3. Add student");
-            System.out.println("4. Remove student");
-            System.out.println("5. Find teacher by name");
-            System.out.println("6. Find student by name");
-            System.out.println("7. Print list of teachers");
-            System.out.println("8. Print list of students");
-            System.out.println("9. Exit");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine(); 
+        while (!choice.equals("8")) {
+            System.out.println("WELCOME TO SCHOOL MANAGEMENT");
+            System.out.println("1. Add a Teacher");
+            System.out.println("2. Remove a Teacher");
+            System.out.println("3. Add a Student");
+            System.out.println("4. Remove a Student");
+            System.out.println("5. Print Students List");
+            System.out.println("6. Print Teachers List");
+            System.out.println("7. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextLine();
 
             switch (choice) {
-                case 1:
-                    System.out.println("Enter teacher name:");
-                    String teacherName = scanner.nextLine();
-                    System.out.println("Enter subject:");
-                    String subject = scanner.nextLine();
-                    Teacher teacher = new Teacher(teacherName, subject);
-                    school.addTeacher(teacher);
-                    System.out.println("Teacher added.");
-                    break;
-                case 2:
-                    System.out.println("Enter teacher name:");
-                    teacherName = scanner.nextLine();
-                    teacher = school.findTeacherByName(teacherName);
-                    if (teacher != null) {
-                        school.removeTeacher(teacher);
-                        System.out.println("Teacher removed.");
-                    } else {
-                        System.out.println("Teacher not found.");
-                    }
-                    break;
-                case 3:
-                    System.out.println("Enter student name:");
-                    String studentName = scanner.nextLine();
-                    System.out.println("Enter grade level:");
-                    int gradeLevel = scanner.nextInt();
-                    scanner.nextLine(); // consume the new line character
-                    Student student = new Student(studentName, gradeLevel);
-                    school.addStudent(student);
-                    System.out.println("Student added.");
-                    break;
-                case 4:
-                    System.out.println("Enter student name:");
-                    studentName = scanner.nextLine();
-                    student = school.findStudentByName(studentName);
-                    if (student != null) {
-                        school.removeStudent(student);
-                        System.out.println("Student removed.");
-                    } else {
-                        System.out.println("Student not found.");
-                    }
-                    break;
-                case 5:
-                    System.out.println("Enter teacher name:");
-                    teacherName = scanner.nextLine();
-                    teacher = school.findTeacherByName(teacherName);
-                    if (teacher != null) {
-                        System.out.println("Teacher found: " + teacher.getName() + " (" + teacher.getSubject() + ")");
-                    } else {
-                        System.out.println("Teacher not found.");
-                    }
-                    break;
-                case 6:
-                    System.out.println("Enter student name:");
-                    studentName = scanner.nextLine();
-                    student = school.findStudentByName(studentName);
-                    if (student != null) {
-                        System.out.println("Student found: " + student.getName() + " (Grade " + student.getGradeLevel() + ")");
-                    } else {
-                        System.out.println("Student not found.");
-                    }
-                    break;
-                case 7:
-                    school.printTeachers();
-                    break;
-                case 8:
-                    school.printStudents();
-                    break;
-                case 9:
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                case "1":
+                System.out.print("Enter teacher's name: ");
+                String teacherName = sc.nextLine();
+            System.out.print("Enter teacher's subject: ");
+                    String teacherSubject = sc.nextLine();
+                Teacher teacher = new Teacher(teacherName, teacherSubject);
+                school.addTeacher(teacher);
+                System.out.println("Teacher added.");
+                break;
+                case "2":
+                System.out.print("Enter teacher's name: ");
+                teacherName = sc.nextLine();
+                teacher = school.findTeacherByName(teacherName);
+                if (teacher != null) {
+                  school.removeTeacher(teacher);
+                  System.out.println("Teacher is Removed.");
+                  school.printTeachers();
+                }   
+                break;
+              case "3":
+                System.out.println("Enter the student name :");
+                String studentName = sc.nextLine();
+                System.out.println("Enter grade level");
+                int gradeLevel = sc.nextInt();
+                Student student = new Student(studentName,gradeLevel);
+                school.addStudent(student);
+                System.out.println("Student added Successfully");
+                break;
+              case "4":
+                System.out.print("Enter Students name: ");
+                studentName = sc.nextLine();
+                student = school.findStudentByName(studentName);
+                if (student != null) {
+                  school.removeStudent(student);
+                  System.out.println("Student is Removed.");
+                }   
+                break;
+              case "5":
+                school.printStudents();
+                break;
+              case "6":
+                school.printTeachers();
+              case "7":
+                System.out.println("Exiting>>>>>>....");
+                break;
             }
         }
     }
