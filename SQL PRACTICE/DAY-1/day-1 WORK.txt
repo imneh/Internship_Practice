@@ -1,0 +1,85 @@
+ -- Create Employees table
+CREATE TABLE Employees (
+  employee_id INT PRIMARY KEY,
+  first_name VARCHAR(20) NOT NULL,
+  last_name VARCHAR(20) NOT NULL,
+  email VARCHAR(20) UNIQUE,
+  hire_date DATE NOT NULL DEFAULT '2023-06-28',
+  department_id INT NOT NULL DEFAULT 0
+);
+
+-- Create Books table
+CREATE TABLE Books (
+  book_id INT PRIMARY KEY,
+  title VARCHAR(20) NOT NULL,
+  author VARCHAR(20) NOT NULL,
+  publication_date DATE NOT NULL DEFAULT '1900-01-01',
+  price DECIMAL(10, 2) NOT NULL,
+  quantity INT NOT NULL DEFAULT 0
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+  order_id INT PRIMARY KEY,
+  customer_id INT NOT NULL,
+  order_date DATE NOT NULL DEFAULT CURRENT_DATE,
+  total_amount DECIMAL(10, 2) NOT NULL,
+  status VARCHAR(50) NOT NULL DEFAULT 'Pending'
+);
+
+-- Create Students table
+CREATE TABLE Students (
+  student_id INT PRIMARY KEY,
+  first_name VARCHAR(20) NOT NULL,
+  last_name VARCHAR(20) NOT NULL,
+  date_of_birth DATE NOT NULL,
+  email VARCHAR(20) UNIQUE,
+  enrollment_status VARCHAR(50) NOT NULL DEFAULT 'Active'
+);
+
+-- Create Countries table
+CREATE TABLE Countries (
+  country_id INT PRIMARY KEY,
+  country_name VARCHAR(20) NOT NULL,
+  population INT NOT NULL,
+  capital_city VARCHAR(20),
+  area DECIMAL(10, 2) NOT NULL DEFAULT 0
+);
+
+ALTER TABLE Customers
+ADD phone_number VARCHAR(15) NOT NULL;
+
+ALTER TABLE Employees
+ALTER COLUMN hire_date DATETIME;
+
+ DROP TABLE Products;
+
+ DROP TABLE TempTable;
+
+ TRUNCATE TABLE Orders;
+
+ TRUNCATE TABLE Logs;
+
+INSERT INTO Employees (employee_id, first_name, last_name, hire_date, salary)
+VALUES
+  (101, 'John', 'Doe', '2023-06-01', 5000.00),
+  (102, 'Jane', 'Smith', '2023-06-05', 5500.00),
+  (103, 'Michael', 'Johnson', '2023-06-10', 6000.00),
+  (104, 'Sarah', 'Williams', '2023-06-15', 5200.00),
+  (105, 'David', 'Brown', '2023-06-20', 4800.00);
+
+INSERT INTO Customers (customer_id, first_name, last_name, email)
+VALUES
+  (1, 'Jane', 'Smith', 'jane@example.com'),
+  (2, 'John', 'Doe', 'john@example.com'),
+  (3, 'Emily', 'Johnson', 'emily@example.com'),
+  (4, 'Michael', 'Brown', 'michael@example.com'),
+  (5, 'Sarah', 'Davis', 'sarah@example.com');
+
+INSERT INTO Products (product_id, product_name, price, quantity)
+VALUES
+  (1001, 'Smartphone', 499.99, 10),
+  (1002, 'Laptop', 999.99, 5),
+  (1003, 'Headphones', 99.99, 20),
+  (1004, 'Tablet', 299.99, 8),
+  (1005, 'Smartwatch', 199.99, 15);
