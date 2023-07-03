@@ -1,0 +1,138 @@
+Design the table:
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.Create a table named "sales" with the following columns:
+
+id: An auto-incrementing integer representing the unique identifier for each sales transaction. This column should be the primary key.
+
+product_name: A string column representing the name of the product sold.
+
+quantity: An integer column representing the quantity of the product sold.
+
+unit_price: A decimal column representing the price of one unit of the product.
+
+total_price: A decimal column representing the total price of the sales transaction (calculated as quantity * unit_price).
+
+customer_name: A string column representing the name of the customer who made the purchase.
+
+sale_date: A date column representing the date of the sales transaction.
+
+Insert data into the table:
+
+ 
+
+Insert at least five sales transactions into the "sales" table, each with different product names, quantities, unit prices, customer names, and sale dates.
+
+Retrieve data from the table:
+
+ 
+
+Write SQL queries to retrieve the following information:
+
+Retrieve all sales transactions made by a specific customer (e.g., customer_name = 'John Smith')
+
+Retrieve sales transactions made by a specific customer (e.g., customer_name = 'John Smith') and a specific product (e.g., product_name = 'Widget'):
+
+Retrieve sales transactions made by either a specific customer (e.g., customer_name = 'John Smith') or a specific product (e.g., product_name = 'Widget')
+
+Retrieve sales transactions with a quantity greater than 10 and a total price less than 100:
+
+Retrieve sales transactions made on a specific date (e.g., sale_date = '2023-06-30') and with a total price greater than or equal to 500:
+
+ANSWER:
+
+
+-- Create the "sales" table
+CREATE TABLE sales (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  product_name VARCHAR(20),
+  quantity int,
+  unit_price DECIMAL(10, 2),
+  total_price DECIMAL(10, 2),
+  customer_name VARCHAR(20),
+  sale_date DATE
+);
+
+-- Insert  data into the "sales" table
+INSERT INTO sales (product_name, quantity, unit_price, total_price, customer_name, sale_date) VALUES
+  ('Product A', 5, 10.00, 50.00, 'John Smith', '2023-06-15'),
+  ('Product B', 3, 15.00, 45.00, 'Jane Doe', '2023-06-16'),
+  ('Product C', 8, 20.00, 160.00, 'John Smith', '2023-06-17'),
+  ('Product D', 2, 25.00, 50.00, 'John Smith', '2023-06-18'),
+  ('Product E', 10, 5.00, 50.00, 'Alice Johnson', '2023-06-19');
+
+-- Retrieve all sales transactions made by a specific customer 
+SELECT * FROM sales WHERE customer_name = 'John Smith';
+
+-- Retrieve sales transactions made by a specific customer 
+SELECT * FROM sales WHERE customer_name = 'John Smith' AND product_name = 'Widget';
+
+-- Retrieve sales transactions made by either a specific customer
+SELECT * FROM sales WHERE customer_name = 'John Smith' OR product_name = 'Widget';
+
+-- Retrieve sales transactions with a quantity greater than 10 and a total price less than 100
+SELECT * FROM sales WHERE quantity > 10 AND total_price < 100;
+
+-- Retrieve sales transactions made on a specific date  and with a total price greater than or equal to 500
+SELECT * FROM sales WHERE sale_date = '2023-06-30' AND total_price >= 500;
+
+------------------------------------------------------------------------------------------------------------------
+2.Create a table named "employees" with the following columns:
+id: An auto-incrementing integer representing the unique identifier for each employee. This column should be the primary key.
+first_name: A string column representing the first name of the employee.
+last_name: A string column representing the last name of the employee.
+email: A string column representing the email address of the employee.
+phone_number: A string column representing the phone number of the employee.
+hire_date: A date column representing the date when the employee was hired.
+salary: A decimal column representing the salary of the employee.
+department: A string column representing the department in which the employee works.
+
+Insert data into the table:
+
+Insert at least five employees into the "employees" table, each with different first names, last names, email addresses, phone numbers, hire dates, salaries, and departments.
+
+Retrieve data from the table:
+
+Write SQL queries to retrieve the following information:
+All employees who work in a specific department (e.g., department = 'Sales').
+All employees who have a salary greater than a certain amount (e.g., salary > 50000).
+The total number of employees in the company.
+The employee(s) with the highest salary.
+The employee(s) hired on a specific date (e.g., hire_date = '2023-01-15').
+
+
+ANSWER :
+
+CREATE TABLE employees (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(20),
+  last_name VARCHAR(20),
+  email VARCHAR(20),
+  phone_number VARCHAR(20),
+  hire_date DATE,
+  salary DECIMAL(10, 2),
+  department VARCHAR(20)
+);
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, salary, department)
+VALUES ('neha', 'shiv', 'neha.s@gmail.com', '1234567890', '2023-05-01', 60000, 'Sales');
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, salary, department)
+VALUES ('salman', 'Saikalgar', 'sall.s10@gmail.com', '9876543210', '2023-03-15', 55000, 'Marketing');
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, salary, department)
+VALUES ('sara', 'alikhan', 'sara.s10@gmail.com', '5555555555', '2023-02-10', 70000, 'Sales');
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, salary, department)
+VALUES ('amulya', 'shetty', 'amulya.1@gmail.com', '9999999999', '2023-06-20', 65000, 'HR');
+
+INSERT INTO employees (first_name, last_name, email, phone_number, hire_date, salary, department)
+VALUES ('karthik', 'kp', 'karthi.n@gmail.com', '1111111111', '2023-04-05', 75000, 'IT');
+
+ SELECT * FROM employees WHERE department = 'Sales';
+ SELECT * FROM employees WHERE salary > 50000;
+ SELECT COUNT(*) AS total_employees FROM employees;
+ SELECT * FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+ SELECT * FROM employees WHERE hire_date = '2023-01-15';
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
