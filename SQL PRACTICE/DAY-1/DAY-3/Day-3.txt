@@ -1,0 +1,301 @@
+Retrieve employees whose age is less than or equal to 25 and belong to the IT department.
+
+Retrieve employees whose first name is either "John" or "Jane."
+
+Retrieve employees whose last name is not "Smith."
+
+Retrieve employees whose age is between 25 and 35 (inclusive).
+
+---------------------------------------------------------------------------------------------------------------
+ 
+
+select * from employees where department="ece";
+
+select * from employees where salary>500;
+
+select id from employees ;
+
+select count(id) from employees ;
+
+select max(salary) from employees  ;
+
+select * from employees where hire_date="2023-02-09";
+
+ 
+
+update employees set first_name="messi" where id=1;
+
+ 
+
+select id,first_name,last_name from employees where id=3;
+
+select first_name from employees where salary between 100 and 200;
+
+select * from employees where salary>=50 and department="ece";
+
+select * from employees where department="cse" or department="ece";
+
+select * from employees where not department="cse";
+
+select * from employees where salary>=300 and not department="ece";
+
+alter table employees add column age int;
+
+update employees set age=10 where id=1;
+
+update employees set age=50 where id=5;
+
+update employees set age=20 where id=2;
+
+update employees set age=30 where id=3;
+
+update employees set age=40 where id=4;
+
+ 
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+select * from employees where first_name like 'j%';
+
+select * from employees where first_name like '%i';
+
+select * from employees where first_name like 'a%i';
+
+select * from employees;
+
+select * from employees where first_name like '%ha%';
+
+select * from employees where first_name like '_o%';
+
+select * from employees where first_name like 'a___%';
+
+----------------------------------------------------------------------------------------------------------------
+ TO COPY SOME PERTICULAR COLUMNS FROM ONE TABLE TO ANOTHER TABLE 
+
+ create table productBackup(product_name varchar(20),total_price int);
+ select AVG(total_price) as average_price from sales;
+ select SUM(total_price) as sum_price from sales;
+
+ select * from sales order by total_price;
+ ----------------------------------------------------------------------------------------------------------------
+
+select length(first_name)from employees;
+select ucase(first_name)from employees;
+select reverse(first_name)from employees;
+select concat(first_name)from employees;
+select substr(first_name,1,3)from employees;
+select insert(first_name,4,2,'AI')from employees;
+
+select current_date();
+select year(current_date());
+select now();
+select hour(now());
+select minute(now());
+select day(now());
+select dayname(now());
+select monthname(now());
+select user();
+select current_user();
+------------------------------------------------------------------------------------------------------------------
+1.Create a new database called "CompanyDB".
+
+ 
+
+Create a table named "Employees" with the following columns:
+
+ 
+
+EmployeeID (integer, primary key)
+FirstName (varchar(50))
+LastName (varchar(50))
+Age (integer)
+Department (varchar(50))
+Salary (decimal(10,2))
+HireDate (date)
+Insert sample data into the "Employees" table with at least 10 records.
+
+ 
+
+Write SQL queries to perform the following tasks:
+a) Retrieve all columns for all employees.
+b) Retrieve the first name and last name of employees with an age greater than 30.
+c) Retrieve the employee ID, first name, and last name of employees in the Sales or HR department.
+d) Retrieve the employee ID, first name, and last name of employees hired between '2022-01-01' and '2022-12-31'.
+e) Retrieve the first name and last name of employees whose first name starts with 'J'.
+f) Retrieve the first name and last name of employees whose last name ends with 'son'.
+g) Retrieve the employee ID, first name, and last name of employees whose age is either 25, 30, or 35.
+h) Retrieve the average salary of all employees.
+i) Retrieve the total salary of employees in the Sales department.
+j) Retrieve the count of employees in the HR department.
+k) Retrieve the employee ID, first name, and last name of employees whose hire date is in the current year.
+l) Retrieve the employee ID, first name, and last name of employees whose first name is not 'John'.
+m) Retrieve the employee ID, first name, and last name of employees sorted by their salary in descending order.
+n) Retrieve the first 5 records from the "Employees" table.
+o) Retrieve the employee ID, first name, and last name of employees whose salary is between $3000 and $5000.
+p) Retrieve the employee ID, first name, and last name of employees whose first name is either 'John' or 'Jane'.
+q) Retrieve the employee ID, first name, and last name of employees whose last name is not 'Smith' and are in the age range of 25 to 40.
+r) Retrieve the employee ID, first name, and last name of employees whose department is either 'Sales' or 'Marketing' and age is greater than 35.
+s) Retrieve the employee ID, first name, and last name of employees whose hire date is within the last 6 months.
+t) Retrieve the employee ID, first name, and last name of employees whose first name contains the letter 'a'.
+u) Retrieve the employee ID, first name, and last name of employees whose last name starts with 'S' and has a length of 6 characters.
+v) Retrieve the employee ID, first name, and last name of employees whose hire month is February.
+w) Retrieve the employee ID, first name, and last name of employees whose age is greater than the average age of all employees.
+x) Retrieve the employee ID, first name, and last name of employees whose salary is higher than the maximum salary in the Sales department.
+y) Retrieve the employee ID, first name, and last name of employees whose hire date is before '2020-01-01' or after '2023-01-01'.
+z) Retrieve the employee ID, first name, and last name of employees whose last name contains the string 'son' in any position.
+aa) Retrieve the employee ID, first name, and last name of employees whose department is 'Finance' and age is not equal to 40.
+bb) Retrieve the employee ID, first name, and last name of employees whose salary is greater than the average salary of employees in the Marketing department.
+cc) Retrieve the employee ID, first name, and last name of employees whose hire date is in the year 2023 and the month is either 'January' or 'February'.
+dd) Retrieve the employee ID, first name, and last name of employees whose first name starts with 'A' and the last name ends with 'son'.
+ee) Retrieve the employee ID, first name, and last name of employees whose age is less than 30 or salary is greater than $5000.
+ff) Retrieve the employee ID, first name, and last name of employees whose department is 'Engineering' and age is between 25 and 35.
+gg) Retrieve the employee ID, first name, and last name of employees whose hire date is on a Monday.
+hh) Retrieve the employee ID, first name, and last name of employees whose last name contains the substring 'smi' (case-insensitive).
+ii) Retrieve the employee ID, first name, and last name of employees whose salary is within the top 10% of the highest salaries.
+jj) Retrieve the employee ID, first name, and last name of employees whose hire date is after 30 days from the current date.
+kk) Retrieve the employee ID, first name, and last name of employees whose age is not in the range of 30 to 40.
+ll) Retrieve the employee ID, first name, and last name of employees whose first name has exactly four characters.
+
+-- Create the Employees table
+
+CREATE TABLE Employees (
+  EmployeeID INT PRIMARY KEY,
+  FirstName VARCHAR(50),
+  LastName VARCHAR(50),
+  Age INT,
+  Department VARCHAR(50),
+  Salary DECIMAL(10,2),
+  HireDate DATE
+);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Insert  data
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Age, Department, Salary, HireDate)
+VALUES
+  (1, 'Neha', 'shiv', 30, 'Sales', 5000.00, '2022-05-01'),
+  (2, 'vijay', 'devrakonda', 35, 'Marketing', 6000.00, '2021-09-15'),
+  (3, 'Michael', 'Johnson', 28, 'HR', 4500.00, '2023-01-10'),
+  (4, 'amulya', 'shetty', 32, 'Sales', 5500.00, '2022-03-20'),
+  (5, 'David', 'Brown', 27, 'Engineering', 4800.00, '2022-08-05'),
+  (6, 'Salman', 'saikalgar', 31, 'Finance', 5200.00, '2022-06-15'),
+  (7, 'Lalitha', 'Ujjaneni', 29, 'Marketing', 5800.00, '2022-11-30'),
+  (8, 'virat', 'kohli', 33, 'HR', 4700.00, '2023-04-25'),
+  (9, 'Daniel', 'Anderson', 26, 'Sales', 5100.00, '2022-09-10'),
+  (10, 'Sophia', 'Wilson', 34, 'Engineering', 4900.00, '2022-07-01');
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+a) Retrieve all columns for all employees.
+SELECT * FROM Employees;
+
+b) Retrieve the first name and last name of employees with an age greater than 30.
+SELECT FirstName, LastName FROM Employees WHERE Age > 30;
+
+c) Retrieve the employee ID, first name, and last name of employees in the Sales or HR department.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Department IN ('Sales', 'HR');
+
+d) Retrieve the employee ID, first name, and last name of employees hired between '2022-01-01' and '2022-12-31'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE HireDate BETWEEN '2022-01-01' AND '2022-12-31';
+
+e) Retrieve the first name and last name of employees whose first name starts with 'J'.
+SELECT FirstName, LastName FROM Employees WHERE FirstName LIKE 'J%';
+
+f) Retrieve the first name and last name of employees whose last name ends with 'son'.
+SELECT FirstName, LastName FROM Employees WHERE LastName LIKE '%son';
+
+g) Retrieve the employee ID, first name, and last name of employees whose age is either 25, 30, or 35.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Age IN (25, 30, 35);
+
+h) Retrieve the average salary of all employees.
+SELECT AVG(Salary) AS AverageSalary FROM Employees;
+
+i) Retrieve the total salary of employees in the Sales department.
+SELECT SUM(Salary) AS TotalSalary FROM Employees WHERE Department = 'Sales';
+
+j) Retrieve the count of employees in the HR department.
+SELECT COUNT(*) AS EmployeeCount FROM Employees WHERE Department = 'HR';
+
+k) Retrieve the employee ID, first name, and last name of employees whose hire date is in the current year.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE YEAR(HireDate) = YEAR(CURRENT_DATE());
+
+l) Retrieve the employee ID, first name, and last name of employees whose first name is not 'John'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE FirstName <> 'John';
+
+m) Retrieve the employee ID, first name, and last name of employees sorted by their salary in descending order.
+SELECT EmployeeID, FirstName, LastName FROM Employees ORDER BY Salary DESC;
+
+n) Retrieve the first 5 records from the "Employees" table.
+SELECT * FROM Employees LIMIT 5;
+
+o) Retrieve the employee ID, first name, and last name of employees whose salary is between $3000 and $5000.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Salary BETWEEN 3000 AND 5000;
+
+p) Retrieve the employee ID, first name, and last name of employees whose first name is either 'John' or 'Jane'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE FirstName IN ('John', 'Jane');
+
+q) Retrieve the employee ID, first name, and last name of employees whose last name is not 'Smith' and are in the age range of 25 to 40.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE LastName <> 'Smith' AND Age BETWEEN 25 AND 40;
+
+r) Retrieve the employee ID, first name, and last name of employees whose department is either 'Sales' or 'Marketing' and age is greater than 35.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Department IN ('Sales', 'Marketing') AND Age > 35;
+
+s) Retrieve the employee ID, first name, and last name of employees whose hire date is within the last 6 months.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE HireDate >= DATE_SUB(CURRENT_DATE(), INTERVAL 6 MONTH);
+
+t) Retrieve the employee ID, first name, and last name of employees whose first name contains the letter 'a'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE FirstName LIKE '%a%';
+
+u) Retrieve the employee ID, first name, and last name of employees whose last name starts with 'S' and has a length of 6 characters.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE LastName LIKE 'S_____' AND LENGTH(LastName) = 6;
+
+v) Retrieve the employee ID, first name, and last name of employees whose hire month is February.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE MONTH(HireDate) = 2;
+
+w) Retrieve the employee ID, first name, and last name of employees whose age is greater than the average age of all employees.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Age > (SELECT AVG(Age) FROM Employees);
+
+x) Retrieve the employee ID, first name, and last name of employees whose salary is higher than the maximum salary in the Sales department.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Salary > (SELECT MAX(Salary) FROM Employees WHERE Department = 'Sales');
+
+y) Retrieve the employee ID, first name, and last name of employees whose hire date is before '2020-01-01' or after '2023-01-01'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE HireDate < '2020-01-01' OR HireDate > '2023-01-01';
+
+z) Retrieve the employee ID, first name, and last name of employees whose last name contains the string 'son' in any position.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE LastName LIKE '%son%';
+
+aa) Retrieve the employee ID, first name, and last name of employees whose department is 'Finance' and age is not equal to 40.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Department = 'Finance' AND Age <> 40;
+
+bb) Retrieve the employee ID, first name, and last name of employees whose salary is greater than the average salary of employees in the Marketing department.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Salary > (SELECT AVG(Salary) FROM Employees WHERE Department = 'Marketing');
+
+cc) Retrieve the employee ID, first name, and last name of employees whose hire date is in the year 2023 and the month is either 'January' or 'February'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE YEAR(HireDate) = 2023 AND MONTHNAME(HireDate) IN ('January', 'February');
+
+dd) Retrieve the employee ID, first name, and last name of employees whose first name starts with 'A' and the last name ends with 'son'.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE FirstName LIKE 'A%' AND LastName LIKE '%son';
+
+ee) Retrieve the employee ID, first name, and last name of employees whose age is less than 30 or salary is greater than $5000.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Age < 30 OR Salary > 5000;
+
+ff) Retrieve the employee ID, first name, and last name of employees whose department is 'Engineering' and age is between 25 and 35.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Department = 'Engineering' AND Age BETWEEN 25 AND 35;
+
+gg) Retrieve the employee ID, first name, and last name of employees whose hire date is on a Monday.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE DAYOFWEEK(HireDate) = 2;
+
+hh) Retrieve the employee ID, first name, and last name of employees whose last name contains the substring 'smi' (case-insensitive).
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE LOWER(LastName) LIKE '%smi%';
+
+ii) Retrieve the employee ID, first name, and last name of employees whose salary is within the top 10% of the highest salaries.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Salary >= (SELECT 0.9 * MAX(Salary) FROM Employees);
+
+jj) Retrieve the employee ID, first name, and last name of employees whose hire date is after 30 days from the current date.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE HireDate > DATE_ADD(CURRENT_DATE(), INTERVAL 30 DAY);
+
+kk) Retrieve the employee ID, first name, and last name of employees whose age is not in the range of 30 to 40.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE Age NOT BETWEEN 30 AND 40;
+
+ll) Retrieve the employee ID, first name, and last name of employees whose first name has exactly four characters.
+SELECT EmployeeID, FirstName, LastName FROM Employees WHERE LENGTH(FirstName) = 4;
+ 
