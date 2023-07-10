@@ -1,0 +1,95 @@
+CREATE TABLE Courses (
+    course_id int NOT NULL,
+    course_name varchar(100),
+    PRIMARY KEY (course_id)
+);
+CREATE TABLE Students (
+    student_id int NOT NULL,
+    student_name varchar(100),
+    date_of_birth date,
+    PRIMARY KEY (student_id));
+
+INSERT INTO Courses (course_id, course_name) VALUES (1, 'Mathematics');
+ 						    (2, 'English');
+ 						    (3, 'Science');
+						    (4, 'History');
+ 					            (5, 'Computer Science');
+
+
+INSERT INTO Students (student_id, student_name, date_of_birth) VALUES 
+		     (1, 'Neha', '2000-01-01'),
+ 		     (2, 'karthik', '1999-05-15'),
+		     (3, 'salman', '2001-09-30'),
+ 		     (4, 'amulya', '2002-03-10'), 
+		     (5, 'siraj', '2003-11-20');
+
+
+SELECT Students.student_id, Students.student_name, Courses.course_id, Courses.course_name
+FROM Students
+INNER JOIN Courses ON Students.student_id = Courses.course_id;
+
+2.Find the students who are enrolled in a specific course and display their student details (student_id, student_name):
+
+SELECT Students.student_id, Students.student_name
+FROM Students
+JOIN Courses ON Students.student_id = Courses.course_id
+WHERE Courses.course_id = 1;
+
+3.Retrieve the course details (course_id, course_name) for a specific student:
+
+SELECT Courses.course_id, Courses.course_name
+FROM Courses
+JOIN Students ON Students.student_id = Courses.course_id
+WHERE Students.student_id = 3;
+
+4.Find the students who are not enrolled in any course and display their student details (student_id, student_name):
+
+SELECT Students.student_id, Students.student_name
+FROM Students
+INNER JOIN Courses ON Students.student_id = Courses.course_id
+WHERE Courses.course_id IS NULL;
+
+5.Retrieve the student details (student_id, student_name) for students who are enrolled in multiple courses:
+
+SELECT Students.student_id, Students.student_name
+FROM Students
+JOIN Courses ON Students.student_id = Courses.course_id
+GROUP BY Students.student_id, Students.student_name
+HAVING COUNT(Courses.course_id) > 1;
+
+6.Calculate the total number of students enrolled in each course and display the course details (course_id, course_name) along with the student count:
+
+SELECT Courses.course_id, Courses.course_name, COUNT(Students.student_id) AS student_count
+FROM Courses
+INNER JOIN Students ON Courses.course_id = Students.student_id
+GROUP BY Courses.course_id, Courses.course_name;
+
+7.Retrieve the student details (student_id, student_name) for students born after a certain date who are enrolled in a specific course:
+
+SELECT Students.student_id, Students.student_name
+FROM Students
+JOIN Courses ON Students.student_id = Courses.course_id
+WHERE Students.date_of_birth > '2000-01-01' AND Courses.course_id = 3;
+
+8.Find the courses with no students enrolled and display the course details (course_id, course_name):
+
+SELECT Courses.course_id, Courses.course_name
+FROM Courses
+INNER JOIN Students ON Courses.course_id = Students.student_id
+WHERE Students.student_id IS NULL;
+
+9.Retrieve the student details (student_id, student_name) for students enrolled in courses with a specific course name:
+
+SELECT Students.student_id, Students.student_name
+FROM Students
+JOIN Courses ON Students.student_id = Courses.course_id
+WHERE Courses.course_name = 'science';
+
+10.Find the courses with the highest number of enrolled students and display the course details (course_id, course_name) along with the student count:
+
+SELECT Courses.course_id, Courses.course_name, COUNT(Students.student_id) AS student_count
+FROM Courses
+JOIN Students ON Courses.course_id = Students.student_id
+GROUP BY Courses.course_id, Courses.course_name
+ORDER BY student_count DESC
+LIMIT 1;
