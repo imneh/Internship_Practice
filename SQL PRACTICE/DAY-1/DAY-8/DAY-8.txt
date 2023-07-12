@@ -1,0 +1,212 @@
+Day-8
+
+1.
+
+create database StudentInformation;
+
+create table Student(Name varchar(20), roll_no int, location varchar(20), phone_no long);
+
+alter table Student add constraint primary key(roll_no);
+
+insert into Student values ('Ram', 101, 'Chennai', 8765483902), ('Raj', 102, 'coimbaore', 7654893206), ('sasi', 103, 'madhurai', 7654893706), ('Ravi', 104, 'salem', 7654898756), ('sumathi', 105, 'kanchipuram', 6557393206);  
+
+create table Section(name varchar(20), roll_no int, section varchar(2));
+
+insert into Section values ('Ravi', 104, 'A'), ('Sumathi', 105, 'B'), ('Raj', 102, 'A');
+
+select name, location, phone_no from Student where roll_no in(select roll_no from Section where section='A');
+
+create table course(name varchar(20), roll_no int, section varchar(2));
+
+insert into course (select * from Section);
+
+update Student set location='chennai' where roll_no in (select roll_no from Section where section='B');
+
+delete from Student where roll_no in(select roll_no from Section where section='B');
+---------------------------------------------------------
+
+Create Database:
+
+create database StudentInformation;
+
+Create Table:
+
+create table Student(Name varchar(20), roll_no int, location varchar(20), phone_no long);
+
+Alter Table:
+
+alter table Student add constraint primary key(roll_no);
+
+Insert into Table:
+
+insert into Student values ('Ram', 101, 'Chennai', 8765483902), ('Raj', 102, 'coimbaore', 7654893206), ('sasi', 103, 'madhurai', 7654893706), ('Ravi', 104, 'salem', 7654898756), ('sumathi', 105, 'kanchipuram', 6557393206);
+
+create table Section(name varchar(20), roll_no int, section varchar(2));
+insert into Section values ('Ravi', 104, 'A'), ('Sumathi', 105, 'B'), ('Raj', 102, 'A');
+
+select name, location, phone_no from Student where roll_no in(select roll_no from Section where section='A');
+
+create table course(name varchar(20), roll_no int, section varchar(2));
+insert into course (select * from Section);
+
+update Student set location='chennai' where roll_no in (select roll_no from Section where section='B');
+
+delete from Student where roll_no in(select roll_no from Section where section='B');
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2
+
+Write a SQL query to retrieve the details of all orders along with the customer information. Include all columns from both tables.
+
+Write a SQL query to retrieve the details of customers who have placed an order. Display customer_id, customer_name, and the count of orders placed by each customer.
+
+Write a SQL query to retrieve the details of customers who have not placed any orders. Display customer_id, customer_name, city, and country.
+
+Write a SQL query to retrieve the total amount spent by each customer. Display customer_id, customer_name, and the sum of total_amount for each customer.
+
+Write a SQL query to retrieve the details of customers who have placed orders with a total amount greater than $1000. Display customer_id, customer_name, and the total number of such orders for each customer.
+
+
+
+Write a SQL query to retrieve the details of customers who have placed orders in the city of "New York." Display customer_id, customer_name, order_id, and order_date for each order.
+
+Write a SQL query to retrieve the details of customers who have placed orders in the year 2022. Display customer_id, customer_name, order_id, order_date, and total_amount for each order.
+
+Write a SQL query to retrieve the customer who has placed the highest total amount order. Display customer_id, customer_name, and the total_amount of their highest order.
+
+Write a SQL query to retrieve the customer who has placed the least number of orders. Display customer_id, customer_name, and the count of orders placed by that customer.
+
+Write a SQL query to retrieve the details of customers who have placed orders with a total amount greater than the average total amount of all orders. Display customer_id, customer_name, and total_amount for each order.
+
+-----------------------------------------------------------
+1.Retrieve details of all orders with customer information:
+
+SELECT *
+FROM Orders o
+JOIN Customers c ON o.customer_id = c.customer_id;
+
+2.Retrieve details of customers who have placed an order:
+
+SELECT c.customer_id, c.customer_name, (
+    SELECT COUNT(order_id)
+    FROM Orders o
+    WHERE o.customer_id = c.customer_id
+) AS order_count
+FROM Customers c;
+
+3.Retrieve details of customers who have not placed any orders:
+
+SELECT c.customer_id, c.customer_name, c.city, c.country
+FROM Customers c
+WHERE c.customer_id NOT IN (
+    SELECT customer_id
+    FROM Orders
+);
+
+4.Retrieve the total amount spent by each customer:
+
+SELECT c.customer_id, c.customer_name, (
+    SELECT SUM(total_amount)
+    FROM Orders o
+    WHERE o.customer_id = c.customer_id
+) AS total_spent
+FROM Customers c;
+
+5.Retrieve details of customers who have placed orders with a total amount greater than $1000:
+
+SELECT c.customer_id, c.customer_name, (
+    SELECT COUNT(order_id)
+    FROM Orders o
+    WHERE o.customer_id = c.customer_id
+        AND o.total_amount > 1000
+) AS order_count
+FROM Customers c;
+
+6.Retrieve details of customers who have placed orders in the city of "New York":
+
+SELECT c.customer_id, c.customer_name, o.order_id, o.order_date
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE c.city = 'New York';
+
+7.Retrieve details of customers who have placed orders in the year 2022:
+
+SELECT c.customer_id, c.customer_name, o.order_id, o.order_date, o.total_amount
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE YEAR(o.order_date) = 2022;
+
+8.Retrieve the customer who has placed the highest total amount order:
+
+SELECT c.customer_id, c.customer_name, (
+    SELECT MAX(total_amount)
+    FROM Orders o
+    WHERE o.customer_id = c.customer_id
+) AS highest_total_amount
+FROM Customers c
+ORDER BY highest_total_amount DESC
+LIMIT 1;
+
+9.Retrieve the customer who has placed the least number of orders:
+
+SELECT c.customer_id, c.customer_name, (
+    SELECT COUNT(order_id)
+    FROM Orders o
+    WHERE o.customer_id = c.customer_id
+) AS order_count
+FROM Customers c
+ORDER BY order_count ASC
+LIMIT 1;
+
+10.Retrieve details of customers who have placed orders with a total amount greater than the average total amount of all orders:
+
+SELECT c.customer_id, c.customer_name, o.total_amount
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE o.total_amount > (
+    SELECT AVG(total_amount)
+    FROM Orders
+);
+----------------------------------------------------------------------------------------------------------------
+1.Retrieve details of customers who have placed orders on the same day as their registration date:
+
+SELECT c.customer_id, c.customer_name, o.order_id, c.registration_date, o.order_date
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE DATE(c.registration_date) = (SELECT DATE(order_date) FROM Orders WHERE customer_id = c.customer_id);
+
+2.Retrieve details of customers who have placed orders with a total amount greater than the average total amount of their respective city:
+
+SELECT c.customer_id, c.customer_name, c.city, o.total_amount, (SELECT AVG(total_amount) FROM Orders WHERE customer_id IN (SELECT customer_id FROM Customers WHERE city = c.city)) AS average_total_amount
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE o.total_amount > (SELECT AVG(total_amount) FROM Orders WHERE customer_id IN (SELECT customer_id FROM Customers WHERE city = c.city));
+
+3.Retrieve details of customers who have placed orders in at least two different countries:
+
+SELECT c.customer_id, c.customer_name, COUNT(DISTINCT o.country) AS distinct_countries_count
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, c.customer_name
+HAVING COUNT(DISTINCT o.country) >= 2;
+
+4.Retrieve details of customers who have placed orders in all available countries:
+
+SELECT c.customer_id, c.customer_name
+FROM Customers c
+WHERE NOT EXISTS (
+    SELECT DISTINCT country
+    FROM Orders
+    WHERE customer_id = c.customer_id
+    GROUP BY customer_id
+    HAVING COUNT(DISTINCT country) < (SELECT COUNT(DISTINCT country) FROM Orders)
+);
+
+5.Retrieve details of customers who have placed orders within the last 30 days:
+
+SELECT c.customer_id, c.customer_name, o.order_id, o.order_date
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+WHERE o.order_date >= (SELECT DATE_SUB(CURDATE(), INTERVAL 30 DAY));
