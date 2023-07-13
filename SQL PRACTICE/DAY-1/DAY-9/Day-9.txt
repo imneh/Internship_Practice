@@ -1,0 +1,365 @@
+StudentDetails: (30 Records)
+StudentId	FName	LName	Age	EmailId	Gender	Address	RollNo
+1	A	B	20	a@gmail.com
+	Chitoor	12345
+
+DeptDetails: (5 records)
+DeptId	DeptName	CreatedDate
+1	CSE	4/2/2020
+
+SubjectDeptDetails: (20 records)
+SubjectId	Subject	DeptId
+1	Python	1
+2	DBMS	1
+
+
+StudentMarks: (50 records)
+SMID	StudentId	SubjectId	Marks	Percentage
+1	1	1	55	
+StudentDeptDetails: (20 records)
+SDeptId	StudentId	DeptId
+1	1	1
+2	2	1
+-------------------------------------------------------------------
+1.Write a query to select all columns of the studentdetails table.
+SELECT *
+FROM StudentDetails;
+
+2.Write a query to select studentid from the studentdetails table.
+
+SELECT StudentId
+FROM StudentDetails;
+
+3.Write a query to select studentnames from the studentdetails table whose age is greater than 20.
+SELECT FName, LName
+FROM StudentDetails
+WHERE Age > 20;
+
+4.Write a query to select sname as StudentName from the studentdetails table whose studentid is less than 10.
+SELECT FName AS StudentName
+FROM StudentDetails
+WHERE StudentId < 10;
+
+5.Write a query to select all columns of the studentdetails table where studentid is either 1, 2, or 7.
+SELECT *
+FROM StudentDetails
+WHERE StudentId IN (1, 2, 7);
+
+6.Write a query to select all columns of the studentdetails table where studentid is from 1 to 10.
+SELECT *
+FROM StudentDetails
+WHERE StudentId BETWEEN 1 AND 10;
+
+7.Write a query to update sname as 'vijay' of the studentdetails table where studentid is 1.
+UPDATE StudentDetails
+SET FName = 'Vijay'
+WHERE StudentId = 1;
+
+8.Write a query to update deptname as 'CSE' of the deptdetails table where deptid is 3.
+UPDATE DeptDetails
+SET DeptName = 'CSE'
+WHERE DeptId = 3;
+
+9.Write a query to update the age as 20 where studentid is either 1, 2, or 3.
+UPDATE StudentDetails
+SET Age = 20
+WHERE StudentId IN (1, 2, 3);
+
+10.Write a query to update the age as 20 where sname starts with 'v'.
+UPDATE StudentDetails
+SET Age = 20
+WHERE FName LIKE 'V%';
+
+11.Write a query to delete the deptdetails records whose deptname is null.
+DELETE FROM DeptDetails
+WHERE DeptName IS NULL;
+
+12.Write a query to select all columns of the studentdetails table whose name is not null.
+SELECT *
+FROM StudentDetails
+WHERE FName IS NOT NULL;
+
+13.Write a query to select all distinct ages from the studentdetails table.
+SELECT DISTINCT Age
+FROM StudentDetails;
+
+14.Write a query to select all the ages whose name ends with 'a'.
+SELECT Age
+FROM StudentDetails
+WHERE FName LIKE '%a';
+
+15.Write a query to delete the records from the studentdetails table whose age is greater than 20.
+DELETE FROM StudentDetails
+WHERE Age > 20;
+
+16.Write a query to delete the records from the studentdetails table whose sname contains 'v'.
+DELETE FROM StudentDetails
+WHERE FName LIKE '%v%';
+
+17.Write a query to update emailid and age of the studentdetails table whose studentid is 5.
+UPDATE StudentDetails
+SET EmailId = 'newemail@gmail.com', Age = 25
+WHERE StudentId = 5;
+
+18.Write a query to select the studentdetails whose age is from 18 to 20 and sname starts with v.
+SELECT *
+FROM StudentDetails
+WHERE Age BETWEEN 18 AND 20 AND FName LIKE 'V%';
+
+19.Write a query to select the studentdetails whose studentid is a multiple of 2 and sname contains 'o'.
+SELECT *
+FROM StudentDetails
+WHERE StudentId % 2 = 0 AND FName LIKE '%o%';
+
+20.Write a query to select the studentdetails by decreasing each age by 2 whose age is greater than 20.
+SELECT StudentId, FName, LName, Age - 2 AS AdjustedAge
+FROM StudentDetails
+WHERE Age > 20;
+
+21.Write a query to get the student who have scored the maximum marks.
+SELECT sd.StudentId, sd.FName, sd.LName, sm.Marks
+FROM StudentDetails sd
+JOIN StudentMarks sm ON sd.StudentId = sm.StudentId
+WHERE sm.Marks = (SELECT MAX(Marks) FROM StudentMarks);
+
+22.Write a query to concatenate firstname and lastname and display with a greeting 'Hi'.
+SELECT CONCAT('Hi, ', FName, ' ', LName) AS Greeting
+FROM StudentDetails;
+
+23.Write a query to sort the students in the studentdetails table by rollno in descending order.
+SELECT *
+FROM StudentDetails
+ORDER BY RollNo DESC;
+
+24.Write a query to sort the students in the studentdetails table by studentid in ascending order.
+SELECT *
+FROM StudentDetails
+ORDER BY StudentId ASC;
+
+25.Write a query to display the top 10 records or sort the details based on the studentid in ascending order.
+SELECT *
+FROM StudentDetails
+ORDER BY StudentId ASC
+LIMIT 10;
+
+26.Write a query to display studentname in ascending order.
+SELECT FName, LName
+FROM StudentDetails
+ORDER BY FName ASC, LName ASC;
+
+27.Write a query to get the maximum age where the student age is greater than 20.
+SELECT MAX(Age)
+FROM StudentDetails
+WHERE Age > 20;
+
+28.Write a query to display the count of students whose age is less than 20.
+SELECT COUNT(*)
+FROM StudentDetails
+WHERE Age < 20;
+
+29.Write a query to update the percentage for each student and each subject mark.
+UPDATE StudentMarks
+SET Percentage = (Marks / 100) * 100;
+
+30.Write a query to display the performance based on the percentage in the following criteria:
+SELECT StudentId, Marks, Percentage,
+    CASE
+        WHEN Percentage >= 40 AND Percentage < 60 THEN 'Average'
+        WHEN Percentage >= 60 AND Percentage < 75 THEN 'Good'
+        WHEN Percentage >= 75 AND Percentage < 85 THEN 'Very Good'
+        WHEN Percentage >= 85 THEN 'Excellent'
+        ELSE 'Poor'
+    END AS Performance
+FROM StudentMarks;
+
+
+31.Write the query to display studentname with max marks of each student group by studentname.
+SELECT s.FName, s.LName, MAX(sm.Marks) AS MaxMarks
+FROM StudentDetails s
+JOIN StudentMarks sm ON s.StudentId = sm.StudentId
+GROUP BY s.FName, s.LName;
+
+32.Write the query to display studentname with sum of marks of each student group by studentname.
+SELECT s.FName, s.LName, SUM(sm.Marks) AS TotalMarks
+FROM StudentDetails s
+JOIN StudentMarks sm ON s.StudentId = sm.StudentId
+GROUP BY s.FName, s.LName;
+
+33.Write the query to display studentname with max marks of each student group by studentname having sum of marks greater than 500.
+SELECT s.FName, s.LName, MAX(sm.Marks) AS MaxMarks, SUM(sm.Marks) AS TotalMarks
+FROM StudentDetails s
+JOIN StudentMarks sm ON s.StudentId = sm.StudentId
+GROUP BY s.FName, s.LName
+HAVING SUM(sm.Marks) > 500;
+
+34.Write the query to display studentname with max marks of each student group by studentname having sum of marks greater than 500 and studentname starts with 'v'.
+SELECT s.FName, s.LName, MAX(sm.Marks) AS MaxMarks, SUM(sm.Marks) AS TotalMarks
+FROM StudentDetails s
+JOIN StudentMarks sm ON s.StudentId = sm.StudentId
+WHERE s.FName LIKE 'v%'
+GROUP BY s.FName, s.LName
+HAVING SUM(sm.Marks) > 500;
+
+35.Write the query to display studentname with min marks of each student group by studentname having sum of marks greater than 600.
+SELECT s.FName, s.LName, MIN(sm.Marks) AS MinMarks, SUM(sm.Marks) AS TotalMarks
+FROM StudentDetails s
+JOIN StudentMarks sm ON s.StudentId = sm.StudentId
+GROUP BY s.FName, s.LName
+HAVING SUM(sm.Marks) > 600;
+
+36.Write the query to display subjectname whose subject name starts with 'P' and department id in (1,2,7).
+SELECT sd.Subject
+FROM SubjectDeptDetails sd
+JOIN DeptDetails d ON sd.DeptId = d.DeptId
+WHERE sd.Subject LIKE 'P%' AND d.DeptId IN (1, 2, 7);
+
+37.Write the query to display students' information whose email id does not contain '@'.
+SELECT *
+FROM StudentDetails
+WHERE EmailId NOT LIKE '%@%';
+
+38.Write the query to display student details in the order of first name and last name in descending order.
+SELECT *
+FROM StudentDetails
+ORDER BY FName DESC, LName DESC;
+
+39.Write the query to get the students count based on gender.
+SELECT Gender, COUNT(*) AS StudentCount
+FROM StudentDetails
+GROUP BY Gender;
+
+40.Write the query to get the students count based on the address and having count greater than 30.
+SELECT Address, COUNT(*) AS StudentCount
+FROM StudentDetails
+GROUP BY Address
+HAVING COUNT(*) > 30;
+
+41.Write a query to display the student name, age, emailid, and deptname of all the students.
+Select s.sname,s.age,s.emailId,d.deptname from studentDetails s,Studentdeptdetails sd,deptdetails d where s.studentid=sd.studentid and sd.deptid=d.deptid;
+
+42.Write a query to display the student name, age, emailid, and rollno of all the students who belong to the CSE department.
+Select s.sname,s.age,s.emailId,s.rollno from studentdetails s,Studetdeptdetails sd,deptdetails d where s.studentid=sd.studentid and sd.deptid=d.deptid and deptname=’CSE’;
+
+43.Write the query to display distinct department details whose studentid ids belong to 1, 3, 5, 4.
+SELECT DISTINCT dd.DeptId, dd.DeptName, dd.CreatedDate
+FROM DeptDetails dd
+JOIN StudentDeptDetails sdd ON dd.DeptId = sdd.DeptId
+WHERE sdd.StudentId IN (1, 3, 5, 4);
+
+44.Write the query to display the marks of the students who belong to the CSE department.
+SELECT sd.FName, sd.LName, sm.Marks
+FROM StudentDetails sd
+JOIN StudentDeptDetails sdd ON sd.StudentId = sdd.StudentId
+JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+JOIN StudentMarks sm ON sd.StudentId = sm.StudentId
+WHERE dd.DeptName = 'CSE';
+
+45.Write the query to display the total marks of the students who belong to the ECE department and have a total marks greater than 500.
+SELECT sd.FName, sd.LName, SUM(sm.Marks) AS TotalMarks
+FROM StudentDetails sd
+JOIN StudentDeptDetails sdd ON sd.StudentId = sdd.StudentId
+JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+JOIN StudentMarks sm ON sd.StudentId = sm.StudentId
+WHERE dd.DeptName = 'ECE'
+GROUP BY sd.FName, sd.LName
+HAVING SUM(sm.Marks) > 500;
+
+46.Write the query to display the student FName, LName, age, and rollno who belong to the CSE department and their names start with 'a'.
+SELECT sd.FName, sd.LName, sd.Age, sd.RollNo
+FROM StudentDetails sd
+JOIN StudentDeptDetails sdd ON sd.StudentId = sdd.StudentId
+JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+WHERE dd.DeptName = 'CSE' AND sd.FName LIKE 'a%';
+
+47.Write the query to display all the student details along with department details that belong to the MECH department using a left outer join.
+SELECT sd.StudentId, sd.FName, sd.LName, sd.Age, sd.EmailId, sdd.SDeptId, dd.DeptName
+FROM StudentDetails sd
+LEFT JOIN StudentDeptDetails sdd ON sd.StudentId = sdd.StudentId
+LEFT JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+WHERE dd.DeptName = 'MECH';
+
+48.Write the query to display all the student details along with department details that belong to the IT department using a right outer join.
+SELECT sd.StudentId, sd.FName, sd.LName, sd.Age, sd.EmailId, sdd.SDeptId, dd.DeptName
+FROM StudentDetails sd
+RIGHT JOIN StudentDeptDetails sdd ON sd.StudentId = sdd.StudentId
+RIGHT JOIN DeptDetails dd ON sdd.DeptId = dd.De
+
+49.Write the query to display student marks along with subjects who have a percentage greater than 70 in the order of studentid.
+SELECT sm.StudentId, s.Subject, sm.Marks, sm.Percentage
+FROM StudentMarks sm
+JOIN SubjectDeptDetails sdd ON sm.SubjectId = sdd.SubjectId
+JOIN StudentDetails sd ON sm.StudentId = sd.StudentId
+JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+WHERE sm.Percentage > 70
+ORDER BY sm.StudentId;
+
+50.Write the query to display student marks along with subjects, department who have a percentage greater than 70 in the order of percentage.
+SELECT sm.StudentId, s.Subject, dd.DeptName, sm.Marks, sm.Percentage
+FROM StudentMarks sm
+JOIN SubjectDeptDetails sdd ON sm.SubjectId = sdd.SubjectId
+JOIN StudentDetails sd ON sm.StudentId = sd.StudentId
+JOIN DeptDetails dd ON sdd.DeptId = dd.DeptId
+WHERE sm.Percentage > 70
+ORDER BY sm.Percentage;
+
+----------------------------------------------------------------------------------------------------------------
+DCL (Data Control Language) includes commands like GRANT and REVOKE, which are useful to give “rights & permissions.” Other permission controls parameters of the database system.
+
+Grant:
+This command is use to give user access privileges to a database.
+
+Syntax:
+
+GRANT SELECT, UPDATE ON MY_TABLE TO SOME_USER, ANOTHER_USER;  
+
+For example:
+
+GRANT SELECT ON Users TO'Tom'@'localhost;
+
+Revoke:
+It is useful to back permissions from the user.
+
+Syntax:
+
+REVOKE privilege_nameON object_nameFROM {user_name |PUBLIC |role_name}
+For example:
+
+REVOKE SELECT, UPDATE ON student FROM BCA, MCA; 
+----------------------------------------------------------------------------------------------------------------
+TCL:
+Transaction control language or TCL commands deal with the transaction within the database.
+
+Commit
+This command is used to save all the transactions to the database.
+
+Syntax:
+
+Commit;
+For example: 
+
+DELETE FROM Students  
+WHERE RollNo =25;  
+COMMIT;  
+
+Rollback
+Rollback command allows you to undo transactions that have not already been saved to the database.
+
+Syntax:
+ROLLBACK;  
+
+Example:
+
+DELETE FROM Students  
+WHERE RollNo =25;  
+
+SAVEPOINT
+This command helps you to sets a savepoint within a transaction.
+
+Syntax:
+SAVEPOINT SAVEPOINT_NAME; 
+----------------------------------------------------------------------------------------------------------------
+Savepoint is a command in SQL that is used with the rollback command.
+It is a command in Transaction Control Language that is used to mark the transaction in a table.
+Consider you are making a very long table, and you want to roll back only to a certain position in a table then; this can be achieved using the savepoint.
+If you made a transaction in a table, you could mark the transaction as a certain name, and later on, if you want to roll back to that point, you can do it easily by using the transaction's name.
+Savepoint is helpful when we want to roll back only a small part of a table and not the whole table. In simple words, we can say savepoint is a bookmark in SQL.
