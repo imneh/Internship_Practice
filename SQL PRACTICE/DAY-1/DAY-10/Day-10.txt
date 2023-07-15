@@ -1,0 +1,115 @@
+Day-10-Friday
+
+"Normalization"- Process of Organizing database(to maintain data intigrity/onsistency)
+"Why"-To avoid redundant/Duplicate data so that we can remove anamalies while inserting,updating,deleting data
+"How"-it will devide the large tables to small tables based on some rules
+"Types" 1NF,2NF,3NF,4NF,5NF
+
+
+
+1NF : ELIMINATES REPEATING GROUP
+      ex: (1 person can have multiple phone numbers/one student cn have multiple courses)
+      to avoid that every table should contain atomic values
+
+2NF : ELIMINATES PARTIAL FUNCTIONAL DEPENDENCY  (--->)
+      CONDITION: *it should be in 1NF
+	         *every non prime attributed  should be functionallyprime attribute
+      ex: if (A,B) are primary keys C,D are oher columns (A<B)--->C if c is dependent on both A,B then it is 	      
+      fully functional dependency           but  (A) <----d  if d is dependent on only A then partial dependency
+
+3NF : ELIMINATES TRANSITIVE DEPENDENCY(indirect relationship)
+      CONDITION: *Should satisfy 1NF and 2NF
+      ex: if A,B,C,D  (considering A as primary key) if A--->B
+					 B--->C  then we can say A--->C so we can remove B
+
+4NF :ELIMINATE MULTIVALUED DEPENDENCY
+     *when attributes in a table are indipendent to each other but both are dependent to one attribute
+
+     ex: Hospital
+	    |
+	-----------
+        |          |
+      waard       facilities
+        |
+       -----
+     patients
+
+Here, hospital--->--->ward
+     hospital--->--->facilities
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"Normalization" is a process in database design that involves organizing data in a relational database to eliminate redundancy and improve data integrity. It is a set of rules that define how to structure database tables and their relationships. The primary goal of normalization is to minimize data duplication and ensure that each piece of data is stored in only one place, avoiding inconsistencies and anomalies.
+
+**WHY**
+
+Elimination of Redundancy: By removing data duplication, normalization helps reduce the storage space required and improves database efficiency.
+
+Data Consistency: Normalization ensures that data is consistent across the database by avoiding anomalies such as update anomalies, insertion anomalies, and deletion anomalies.
+
+Data Integrity: Normalization helps maintain the integrity of data by enforcing relationships and dependencies between tables, preventing inconsistencies and inaccuracies.
+
+**ADVANTAGES**
+
+Improved Database Performance: Normalized databases are typically faster for querying and searching operations because they require fewer joins and can access smaller sets of data.
+
+Simplified Database Maintenance: With normalized data, updates and modifications are easier to perform, as changes need to be made in fewer places.
+
+Enhanced Data Integrity: Normalization reduces the risk of data inconsistencies, ensuring that data is accurate and reliable.
+
+****TYPES**** 
+
+FIRST NORMAL FORM (1NF): In 1NF, data is organized into tables with rows and columns, and each column contains only atomic values (indivisible values). There should be no repeating groups or arrays within the tables.
+Example: Let's consider a table for storing customer information. Each customer has a unique ID, name, and multiple phone numbers. To achieve 1NF, we would split the phone numbers into a separate table, linked to the customer's ID.
+
+Customer Table:
+ID | Name | Phone Numbers
+1 | John | 123-456-7890, 987-654-3210
+
+Normalized Tables:
+Customer Table:
+ID | Name
+1 | John
+
+Phone Numbers Table:
+Customer ID | Phone Number
+1 | 123-456-7890
+1 | 987-654-3210
+
+SECOND NORMALFORM (2NF): 2NF builds upon 1NF by ensuring that each non-key column in a table is functionally dependent on the entire primary key and not just part of it. It eliminates partial dependencies.
+Example: Let's consider a product order table. In this table, the primary key consists of the combination of OrderID and ProductID. The table includes columns for OrderID, ProductID, ProductName, and ProductDescription. However, ProductName and ProductDescription are dependent only on ProductID, not the entire primary key. To achieve 2NF, we would split the table into two tables: Orders and Products.
+
+Order Table:
+OrderID | ProductID
+1 | 1
+1 | 2
+
+Product Table:
+ProductID | ProductName | ProductDescription
+1 | Laptop | High-performance laptop
+2 | Mouse | Wireless mouse
+
+THIRD NORMAL FORM (3NF): 3NF further refines the normalization process by eliminating transitive dependencies. It ensures that no non-key column depends on another non-key column.
+Example: Consider an employee table where the primary key is EmployeeID, and the table includes columns for EmployeeID, DepartmentID, and DepartmentName. DepartmentName is dependent on DepartmentID, not the entire primary key. To achieve 3NF, we would split the table into two tables: Employees and Departments.
+
+Employee Table:
+EmployeeID | DepartmentID | DepartmentName
+1 | 1 | HR
+2 | 2 | IT
+
+Department Table:
+DepartmentID | DepartmentName
+1 | HR
+2 | IT
+
+4.FOURTH NORMAL FORMS (4NF)
+Example:
+Consider a table called "Employees" with the following attributes: EmployeeID, Department, Skills, and Projects. Here, Skills and Projects are multi-valued attributes that can have multiple values for each employee.
+
+Employees(EmployeeID, Department, Skills, Projects)
+
+To achieve 4NF, we split the table into two separate tables:
+
+Employees(EmployeeID, Department)
+EmployeeSkills(EmployeeID, Skill)
+EmployeeProjects(EmployeeID, Project)
+
